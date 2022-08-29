@@ -16,7 +16,8 @@ const CarouselCardItem = ({ item, index }) => {
     <View style={styles.container} key={index}>
       <ImageBackground
         source={{ uri: item.image }}
-        style={{ height: 150, width: 300, borderRadius: 10 }}
+        style={{ height: 150, width: 300}}
+        imageStyle={{ borderRadius: 15}}
       >
         <Text
           style={{
@@ -39,8 +40,7 @@ const CarouselCardItem = ({ item, index }) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
-    borderRadius: 8,
-    width: ITEM_WIDTH,
+    width: 0,
     marginTop: 20,
     marginBottom: 12,
     shadowColor: "#000",

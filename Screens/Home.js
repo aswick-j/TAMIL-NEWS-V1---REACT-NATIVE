@@ -1,63 +1,77 @@
 import React from "react";
 
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  ImageBackground,
+} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Card from "../Components/Card";
 
-import {FlatListSlider} from 'react-native-flatlist-slider';
-import Carousel from 'react-native-snap-carousel'
-import CarouselCardItem, { SLIDER_WIDTH, ITEM_WIDTH } from "./CarItem"
+import { FlatListSlider } from "react-native-flatlist-slider";
+import Carousel from "react-native-snap-carousel";
+import CarouselCardItem, { SLIDER_WIDTH, ITEM_WIDTH } from "./CarItem";
 import BannerSlider from "../Components/BannerSlider";
 
 import { sliderData } from "../Model/Data";
 import { windowWidth } from "../utils/Dimensions";
+import Weather from "../Components/Weather";
 
 const Home = () => {
-    const isCarousel = React.useRef(null)
+  const isCarousel = React.useRef(null);
 
   const renderBanner = ({ item, index }) => {
     return <BannerSlider data={item} />;
   };
-  
 
   return (
     <SafeAreaView>
-        <ScrollView>
-      <View style={styles.header}>
-        <View>
-          <Text style={styles.Heading}>Good Afternoon,</Text>
-          <Text style={styles.subHeading}>News Reader</Text>
+      <ScrollView>
+        <View style={styles.header}>
+          <View>
+            <Text style={styles.Heading}>Good Afternoon,</Text>
+            <Text style={styles.subHeading}>News Reader</Text>
+          </View>
+          <Text style={styles.Day}>AUGUST 29</Text>
         </View>
-        <Text style={styles.Day}>AUGUST 29</Text>
-      </View>
-      <View>
-        <Text style={styles.HeadingNews}>Breaking News</Text>
-        <Carousel
-        layout="default"
-        layoutCardOffset={9}
-        ref={isCarousel}
-        data={sliderData}
-        renderItem={CarouselCardItem}
-        sliderWidth={SLIDER_WIDTH}
-        itemWidth={300}
-        inactiveSlideShift={0}
-        useScrollView={true}
-        loop={true}
-      />
-      </View>
+        <View>
+          <Text style={styles.HeadingNews}>Breaking News</Text>
+          <Carousel
+            layout="default"
+            layoutCardOffset={9}
+            ref={isCarousel}
+            data={sliderData}
+            renderItem={CarouselCardItem}
+            sliderWidth={SLIDER_WIDTH}
+            itemWidth={300}
+            inactiveSlideShift={0}
+            useScrollView={true}
+            loop={true}
+          />
+        </View>
 
         <View>
-        <Text style={styles.HeadingNews}>Weather</Text>
-        <Card/>
-      </View>
-      <View>
-        <Text style={styles.HeadingNews}>Tamil Panchang</Text>
-        <Card/>
-      </View>
-      <View>
-        <Text style={styles.HeadingNews}>Tamil Astrology</Text>
-        <Card/>
-      </View>
+          <Text style={styles.weather}>Weather</Text>
+            <ImageBackground
+              source={{
+                uri: `https://images.pexels.com/photos/3299386/pexels-photo-3299386.jpeg?auto=compress&cs=tinysrgb&w=600`,
+              }}
+              style={{height:150,marginLeft:20,marginRight:20,marginTop:20}}
+              imageStyle={{ borderRadius: 25}}
+            >
+              <Weather />
+            </ImageBackground>
+          </View>
+        <View>
+          <Text style={styles.HeadingNews}>Tamil Panchang</Text>
+          <Card />
+        </View>
+        <View>
+          <Text style={styles.HeadingNews}>Tamil Astrology</Text>
+          <Card />
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -93,5 +107,22 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginLeft: 15,
     marginTop: 30,
+  },
+  weather: {
+    fontSize: 15,
+    fontWeight: "bold",
+    marginLeft: 15,
+    marginTop: 10,
+  },
+  container: {
+    height: 150,
+    backgroundColor: "grey",
+    elevation: 10,
+    width: windowWidth,
+    marginLeft: 10,
+    marginRight: 10,
+    padding: 15,
+    borderRadius: 20,
+    marginTop: 20,
   },
 });
