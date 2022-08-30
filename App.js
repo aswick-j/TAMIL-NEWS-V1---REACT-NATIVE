@@ -14,6 +14,7 @@ import Profile from "./Screens/Profile";
 export default function App() {
   const Stack = createNativeStackNavigator();
   const Tab = createBottomTabNavigator();
+  
 
   return (
     <NavigationContainer>

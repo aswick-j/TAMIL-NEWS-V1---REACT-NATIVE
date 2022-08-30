@@ -1,0 +1,38 @@
+export const Weather = [
+    {
+      image: require("../assets/card1.png"),
+      weather: "Heavy Rain",
+      weath_Im: require("../assets/rain.png"),
+      Time: "Morning",
+      Temp: "29 °",
+      Qu: "Feels Like 30 °",
+      Day: "Today",
+    },
+    {
+      image: require("../assets/card2.png"),
+      weather: "Cloudy",
+      weath_Im: require("../assets/cloudy.png"),
+      Time: "Morning",
+      Temp: "25 °",
+      Qu: "Feels Like 15 °",
+      Day: "Yesterday",
+    },
+    {
+      image: require("../assets/card3.png"),
+      weather: "Heavy Rain",
+      weath_Im: require("../assets/rain.png"),
+      Time: "Morning",
+      Temp: "27 °",
+      Qu: "Feels Like 30 °",
+      Day: "Ereyesterday",
+    },
+    {
+      image: require("../assets/card4.png"),
+      weather: "Sunny",
+      weath_Im: require("../assets/sunny.png"),
+      Time: "Morning",
+      Temp: "45 °",
+      Qu: "Feels Like 50 °",
+      Day: "Tomorrow",
+    },
+  ];

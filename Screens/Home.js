@@ -6,25 +6,26 @@ import {
   View,
   SafeAreaView,
   ImageBackground,
+  TouchableWithoutFeedback,
+  Image,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Card from "../Components/Card";
 
-import { FlatListSlider } from "react-native-flatlist-slider";
+
 import Carousel from "react-native-snap-carousel";
 import CarouselCardItem, { SLIDER_WIDTH, ITEM_WIDTH } from "./CarItem";
-import BannerSlider from "../Components/BannerSlider";
+
 
 import { sliderData } from "../Model/Data";
 import { windowWidth } from "../utils/Dimensions";
-import Weather from "../Components/Weather";
+import { Weather } from "../Model/WeatherData";
+import WeatherCompo from "../Components/WeatherCompo";
+
 
 const Home = () => {
-  const isCarousel = React.useRef(null);
 
-  const renderBanner = ({ item, index }) => {
-    return <BannerSlider data={item} />;
-  };
+  const isCarousel = React.useRef(null);
 
   return (
     <SafeAreaView>
@@ -34,7 +35,7 @@ const Home = () => {
             <Text style={styles.Heading}>Good Afternoon,</Text>
             <Text style={styles.subHeading}>News Reader</Text>
           </View>
-          <Text style={styles.Day}>AUGUST 29</Text>
+          <Text style={styles.Day}>AUGUST 30</Text>
         </View>
         <View>
           <Text style={styles.HeadingNews}>Breaking News</Text>
@@ -54,16 +55,19 @@ const Home = () => {
 
         <View>
           <Text style={styles.weather}>Weather</Text>
-            <ImageBackground
-              source={{
-                uri: `https://images.pexels.com/photos/3299386/pexels-photo-3299386.jpeg?auto=compress&cs=tinysrgb&w=600`,
-              }}
-              style={{height:150,marginLeft:20,marginRight:20,marginTop:20}}
-              imageStyle={{ borderRadius: 25}}
-            >
-              <Weather />
-            </ImageBackground>
-          </View>
+          <Carousel
+            layout="default"
+            layoutCardOffset={9}
+            ref={isCarousel}
+            data={Weather}
+            renderItem={WeatherCompo}
+            sliderWidth={SLIDER_WIDTH}
+            itemWidth={300}
+            inactiveSlideShift={0}
+            useScrollView={true}
+            loop={true}
+          />
+        </View>
         <View>
           <Text style={styles.HeadingNews}>Tamil Panchang</Text>
           <Card />
@@ -112,7 +116,8 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "bold",
     marginLeft: 15,
-    marginTop: 10,
+    marginTop: 5,
+    marginBottom:15
   },
   container: {
     height: 150,
