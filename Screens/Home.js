@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 
 import {
   StyleSheet,
@@ -16,7 +16,6 @@ import Card from "../Components/Card";
 import Carousel from "react-native-snap-carousel";
 import CarouselCardItem, { SLIDER_WIDTH, ITEM_WIDTH } from "./CarItem";
 
-
 import { sliderData } from "../Model/Data";
 import { windowWidth } from "../utils/Dimensions";
 import { Weather } from "../Model/WeatherData";
@@ -26,6 +25,8 @@ import WeatherCompo from "../Components/WeatherCompo";
 const Home = () => {
 
   const isCarousel = React.useRef(null);
+  
+ 
 
   return (
     <SafeAreaView>
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
   Heading: {
     color: "tomato",
     fontSize: 15,
-    marginTop: 50,
+    marginTop: 5,
     marginLeft: 15,
     fontWeight: "bold",
   },
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
   },
   Day: {
     fontSize: 10,
-    marginTop: 70,
+    marginTop: 5,
     marginRight: 10,
     fontWeight: "bold",
   },

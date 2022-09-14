@@ -9,7 +9,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import Home from "./Screens/Home";
 import News from "./Screens/News";
 import LiveNews from "./Screens/LiveNews";
-import Profile from "./Screens/Profile";
+import Weather from "./Screens/Weather";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -31,8 +31,8 @@ export default function App() {
               iconName = focused
                 ? "play-circle-outline"
                 : "play-circle-outline";
-            } else if (route.name === "Profile") {
-              iconName = focused ? "person-outline" : "person-outline";
+            } else if (route.name === "Weather") {
+              iconName = focused ? "thunderstorm-outline" : "thunderstorm-outline";
             }
             return <Ionicons name={iconName} size={18} color={color} />;
           },
@@ -43,7 +43,7 @@ export default function App() {
         <Tab.Screen name="Home" component={Home} options={{headerShown:false}}/>
         <Tab.Screen name="News" component={News} options={{headerShown:false}}/>
         <Tab.Screen name="Live" component={LiveNews} options={{headerShown:false}}/>
-        <Tab.Screen name="Profile" component={Profile} options={{headerShown:false}}/>
+        <Tab.Screen name="Weather" component={Weather} options={{headerShown:false}}/>
       </Tab.Navigator>
     </NavigationContainer>
   );
