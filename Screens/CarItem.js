@@ -17,7 +17,7 @@ const CarouselCardItem = ({ item, index }) => {
   return (
     <View style={styles.container} key={index}>
       <ImageBackground
-        source={{ uri: item.image }}
+        source={{ uri: item.thumbnail }}
         style={{ height: 150, width: 300}}
         imageStyle={{ borderRadius: 15}}
       >
@@ -30,6 +30,7 @@ const CarouselCardItem = ({ item, index }) => {
             left: 0,
             marginLeft: 10,
             marginBottom: 10,
+            // backgroundColor:"grey",
           }}
         >
           {item.title}

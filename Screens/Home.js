@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   StyleSheet,
@@ -12,7 +12,6 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 import Card from "../Components/Card";
 
-
 import Carousel from "react-native-snap-carousel";
 import CarouselCardItem, { SLIDER_WIDTH, ITEM_WIDTH } from "./CarItem";
 
@@ -20,14 +19,20 @@ import { sliderData } from "../Model/Data";
 import { windowWidth } from "../utils/Dimensions";
 import { Weather } from "../Model/WeatherData";
 import WeatherCompo from "../Components/WeatherCompo";
-
+import axios from "axios";
 
 const Home = () => {
-
   const isCarousel = React.useRef(null);
-  
- 
 
+  const [news, setNews] = useState({});
+
+  useEffect(() => {
+    axios.get(" https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.feedburner.com%2FPuthiyathalaimurai_banner_news")
+    .then((response) => {
+      setNews(response.data.items);
+    });
+  }, []);
+// console.log("dds====>",JSON.stringify(news));
   return (
     <SafeAreaView>
       <ScrollView>
@@ -44,7 +49,7 @@ const Home = () => {
             layout="default"
             layoutCardOffset={9}
             ref={isCarousel}
-            data={sliderData}
+            data={news}
             renderItem={CarouselCardItem}
             sliderWidth={SLIDER_WIDTH}
             itemWidth={300}
@@ -92,7 +97,7 @@ const styles = StyleSheet.create({
   Heading: {
     color: "tomato",
     fontSize: 15,
-    marginTop: 5,
+    marginTop: 50,
     marginLeft: 15,
     fontWeight: "bold",
   },
@@ -103,7 +108,7 @@ const styles = StyleSheet.create({
   },
   Day: {
     fontSize: 10,
-    marginTop: 5,
+    marginTop: 70,
     marginRight: 10,
     fontWeight: "bold",
   },
@@ -118,7 +123,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginLeft: 15,
     marginTop: 5,
-    marginBottom:15
+    marginBottom: 15,
   },
   container: {
     height: 150,
